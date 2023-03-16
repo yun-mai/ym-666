@@ -23,7 +23,7 @@ on:
 env:
   TKE_IMAGE_URL: ccr.ccs.tencentyun.com/yunmai/ym666
   TKE_REGION: ap-guangzhou
-  TKE_CLUSTER_ID: cls-ym666
+  TKE_CLUSTER_ID: cls-6n81hriw
   DEPLOYMENT_NAME: tke-ym666
 
 permissions:
