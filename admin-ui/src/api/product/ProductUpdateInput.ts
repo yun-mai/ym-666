@@ -1,8 +1,8 @@
 import { OrderUpdateManyWithoutProductsInput } from "./OrderUpdateManyWithoutProductsInput";
 
 export type ProductUpdateInput = {
-  description?: string | null;
-  itemPrice?: number | null;
   name?: string | null;
+  itemPrice?: number | null;
+  description?: string | null;
   orders?: OrderUpdateManyWithoutProductsInput;
 };

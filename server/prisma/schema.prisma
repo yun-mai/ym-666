@@ -8,60 +8,61 @@ generator client {
 }
 
 model User {
-  createdAt DateTime @default(now())
-  firstName String?
   id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  firstName String?
   lastName  String?
+  username  String   @unique
   password  String
   roles     Json
-  updatedAt DateTime @updatedAt
-  username  String   @unique
 }
 
 model Order {
+  id         String    @id @default(cuid())
   createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  quantity   Int?
+  discount   Float?
+  totalPrice Int?
   customer   Customer? @relation(fields: [customerId], references: [id])
   customerId String?
-  discount   Float?
-  id         String    @id @default(cuid())
   product    Product?  @relation(fields: [productId], references: [id])
   productId  String?
-  quantity   Int?
-  totalPrice Int?
-  updatedAt  DateTime  @updatedAt
 }
 
 model Customer {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  firstName String?
+  lastName  String?
+  email     String?
+  phone     String?
+  orders    Order[]
   address   Address? @relation(fields: [addressId], references: [id])
   addressId String?
-  createdAt DateTime @default(now())
-  email     String?
-  firstName String?
-  id        String   @id @default(cuid())
-  lastName  String?
-  orders    Order[]
-  phone     String?
-  updatedAt DateTime @updatedAt
 }
 
 model Address {
+  id        String     @id @default(cuid())
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
   address_1 String?
   address_2 String?
   city      String?
-  createdAt DateTime   @default(now())
-  customers Customer[]
-  id        String     @id @default(cuid())
   state     String?
-  updatedAt DateTime   @updatedAt
   zip       Int?
+  customers Customer[]
+  tel       String?
 }
 
 model Product {
-  createdAt   DateTime @default(now())
-  description String?
   id          String   @id @default(cuid())
-  itemPrice   Float?
-  name        String?
-  orders      Order[]
+  createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  name        String?
+  itemPrice   Float?
+  description String?
+  orders      Order[]
 }
