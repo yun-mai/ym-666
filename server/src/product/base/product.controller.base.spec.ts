@@ -19,38 +19,38 @@ import { ProductService } from "../product.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
-  createdAt: new Date(),
-  description: "exampleDescription",
   id: "exampleId",
-  itemPrice: 42.42,
-  name: "exampleName",
+  createdAt: new Date(),
   updatedAt: new Date(),
+  name: "exampleName",
+  itemPrice: 42.42,
+  description: "exampleDescription",
 };
 const CREATE_RESULT = {
-  createdAt: new Date(),
-  description: "exampleDescription",
   id: "exampleId",
-  itemPrice: 42.42,
-  name: "exampleName",
+  createdAt: new Date(),
   updatedAt: new Date(),
+  name: "exampleName",
+  itemPrice: 42.42,
+  description: "exampleDescription",
 };
 const FIND_MANY_RESULT = [
   {
-    createdAt: new Date(),
-    description: "exampleDescription",
     id: "exampleId",
-    itemPrice: 42.42,
-    name: "exampleName",
+    createdAt: new Date(),
     updatedAt: new Date(),
+    name: "exampleName",
+    itemPrice: 42.42,
+    description: "exampleDescription",
   },
 ];
 const FIND_ONE_RESULT = {
-  createdAt: new Date(),
-  description: "exampleDescription",
   id: "exampleId",
-  itemPrice: 42.42,
-  name: "exampleName",
+  createdAt: new Date(),
   updatedAt: new Date(),
+  name: "exampleName",
+  itemPrice: 42.42,
+  description: "exampleDescription",
 };
 
 const service = {

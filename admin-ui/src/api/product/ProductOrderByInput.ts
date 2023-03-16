@@ -1,10 +1,10 @@
 import { SortOrder } from "../../util/SortOrder";
 
 export type ProductOrderByInput = {
-  createdAt?: SortOrder;
-  description?: SortOrder;
   id?: SortOrder;
-  itemPrice?: SortOrder;
-  name?: SortOrder;
+  createdAt?: SortOrder;
   updatedAt?: SortOrder;
+  name?: SortOrder;
+  itemPrice?: SortOrder;
+  description?: SortOrder;
 };

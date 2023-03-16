@@ -1,12 +1,12 @@
 import { SortOrder } from "../../util/SortOrder";
 
 export type CustomerOrderByInput = {
-  addressId?: SortOrder;
-  createdAt?: SortOrder;
-  email?: SortOrder;
-  firstName?: SortOrder;
   id?: SortOrder;
-  lastName?: SortOrder;
-  phone?: SortOrder;
+  createdAt?: SortOrder;
   updatedAt?: SortOrder;
+  firstName?: SortOrder;
+  lastName?: SortOrder;
+  email?: SortOrder;
+  phone?: SortOrder;
+  addressId?: SortOrder;
 };

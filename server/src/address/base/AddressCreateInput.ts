@@ -11,7 +11,7 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, ValidateNested, IsInt } from "class-validator";
+import { IsString, IsOptional, IsInt, ValidateNested } from "class-validator";
 import { CustomerCreateNestedManyWithoutAddressesInput } from "./CustomerCreateNestedManyWithoutAddressesInput";
 import { Type } from "class-transformer";
 
@@ -52,18 +52,6 @@ class AddressCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => CustomerCreateNestedManyWithoutAddressesInput,
-  })
-  @ValidateNested()
-  @Type(() => CustomerCreateNestedManyWithoutAddressesInput)
-  @IsOptional()
-  @Field(() => CustomerCreateNestedManyWithoutAddressesInput, {
-    nullable: true,
-  })
-  customers?: CustomerCreateNestedManyWithoutAddressesInput;
-
-  @ApiProperty({
-    required: false,
     type: String,
   })
   @IsString()
@@ -83,6 +71,29 @@ class AddressCreateInput {
     nullable: true,
   })
   zip?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => CustomerCreateNestedManyWithoutAddressesInput,
+  })
+  @ValidateNested()
+  @Type(() => CustomerCreateNestedManyWithoutAddressesInput)
+  @IsOptional()
+  @Field(() => CustomerCreateNestedManyWithoutAddressesInput, {
+    nullable: true,
+  })
+  customers?: CustomerCreateNestedManyWithoutAddressesInput;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  tel?: string | null;
 }
 
 export { AddressCreateInput as AddressCreateInput };

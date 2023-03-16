@@ -19,42 +19,42 @@ import { CustomerService } from "../customer.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
-  createdAt: new Date(),
-  email: "exampleEmail",
-  firstName: "exampleFirstName",
   id: "exampleId",
-  lastName: "exampleLastName",
-  phone: "examplePhone",
+  createdAt: new Date(),
   updatedAt: new Date(),
+  firstName: "exampleFirstName",
+  lastName: "exampleLastName",
+  email: "exampleEmail",
+  phone: "examplePhone",
 };
 const CREATE_RESULT = {
-  createdAt: new Date(),
-  email: "exampleEmail",
-  firstName: "exampleFirstName",
   id: "exampleId",
-  lastName: "exampleLastName",
-  phone: "examplePhone",
+  createdAt: new Date(),
   updatedAt: new Date(),
+  firstName: "exampleFirstName",
+  lastName: "exampleLastName",
+  email: "exampleEmail",
+  phone: "examplePhone",
 };
 const FIND_MANY_RESULT = [
   {
-    createdAt: new Date(),
-    email: "exampleEmail",
-    firstName: "exampleFirstName",
     id: "exampleId",
-    lastName: "exampleLastName",
-    phone: "examplePhone",
+    createdAt: new Date(),
     updatedAt: new Date(),
+    firstName: "exampleFirstName",
+    lastName: "exampleLastName",
+    email: "exampleEmail",
+    phone: "examplePhone",
   },
 ];
 const FIND_ONE_RESULT = {
-  createdAt: new Date(),
-  email: "exampleEmail",
-  firstName: "exampleFirstName",
   id: "exampleId",
-  lastName: "exampleLastName",
-  phone: "examplePhone",
+  createdAt: new Date(),
   updatedAt: new Date(),
+  firstName: "exampleFirstName",
+  lastName: "exampleLastName",
+  email: "exampleEmail",
+  phone: "examplePhone",
 };
 
 const service = {

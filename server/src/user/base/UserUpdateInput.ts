@@ -48,6 +48,17 @@ class UserUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
+  username?: string;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   password?: string;
 
   @ApiProperty({
@@ -59,17 +70,6 @@ class UserUpdateInput {
     nullable: true,
   })
   roles?: InputJsonValue;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  username?: string;
 }
 
 export { UserUpdateInput as UserUpdateInput };
