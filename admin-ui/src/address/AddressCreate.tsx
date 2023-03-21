@@ -29,7 +29,6 @@ export const AddressCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={CustomerTitle} />
         </ReferenceArrayInput>
-        <TextInput label="tel" source="tel" />
       </SimpleForm>
     </Create>
   );

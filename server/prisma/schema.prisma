@@ -54,7 +54,6 @@ model Address {
   state     String?
   zip       Int?
   customers Customer[]
-  tel       String?
 }
 
 model Product {

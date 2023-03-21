@@ -110,17 +110,6 @@ class Address {
   @Type(() => Customer)
   @IsOptional()
   customers?: Array<Customer>;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  tel!: string | null;
 }
 
 export { Address as Address };

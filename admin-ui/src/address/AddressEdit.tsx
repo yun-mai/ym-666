@@ -29,7 +29,6 @@ export const AddressEdit = (props: EditProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={CustomerTitle} />
         </ReferenceArrayInput>
-        <TextInput label="tel" source="tel" />
       </SimpleForm>
     </Edit>
   );
