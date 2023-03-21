@@ -97,17 +97,6 @@ class AddressWhereInput {
     nullable: true,
   })
   customers?: CustomerListRelationFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  tel?: StringNullableFilter;
 }
 
 export { AddressWhereInput as AddressWhereInput };

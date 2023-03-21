@@ -83,17 +83,6 @@ class AddressCreateInput {
     nullable: true,
   })
   customers?: CustomerCreateNestedManyWithoutAddressesInput;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  tel?: string | null;
 }
 
 export { AddressCreateInput as AddressCreateInput };

@@ -20,7 +20,6 @@ export const AddressList = (props: ListProps): React.ReactElement => {
         <TextField label="City" source="city" />
         <TextField label="State" source="state" />
         <TextField label="Zip" source="zip" />
-        <TextField label="tel" source="tel" />
       </Datagrid>
     </List>
   );
