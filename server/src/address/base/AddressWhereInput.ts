@@ -107,7 +107,7 @@ class AddressWhereInput {
   @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  tel?: StringNullableFilter;
+  pos?: StringNullableFilter;
 }
 
 export { AddressWhereInput as AddressWhereInput };

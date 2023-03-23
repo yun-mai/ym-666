@@ -97,7 +97,7 @@ class AddressOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  tel?: SortOrder;
+  pos?: SortOrder;
 }
 
 export { AddressOrderByInput as AddressOrderByInput };
