@@ -28,7 +28,6 @@ pipeline {
             sshCommand remote: getServer('119.3.41.106'), command: "rm -Rf code",failOnError:false 
             sshCommand remote: getServer('119.3.41.106'), command: "mkdir code",failOnError:false    
             sshPut remote: getServer('119.3.41.106'), from: './server', into: './code'
-            sshPut remote: getServer('119.3.41.106'), from: './admin-ui', into: './code'
             sshCommand remote: getServer('119.3.41.106'), command: "ls -l  ./code"
             sshCommand remote: getServer('119.3.41.106'), command: "docker-compose -f code/server/docker-compose.yml up"              
           }
@@ -38,7 +37,7 @@ pipeline {
             sh 'sleep 120'
             sshPut remote: getServer('119.3.41.106'), from: './admin-ui', into: './code'
             sshCommand remote: getServer('119.3.41.106'), command: "ls -l  ./code/admin-ui"
-            sshCommand remote: getServer('119.3.41.106'), command: "docker build -t ccict/ym666-admin-ui ./code/admin-ui",failOnError:false              
+            sshCommand remote: getServer('119.3.41.106'), command: "docker build -t ccict/ym666-admin-ui code/admin-ui",failOnError:false              
           }
         }
       }
