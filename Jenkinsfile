@@ -30,7 +30,7 @@ pipeline {
             sshPut remote: getServer('119.3.41.106'), from: './server', into: './code'
             sshPut remote: getServer('119.3.41.106'), from: './admin-ui', into: './code'
             sshCommand remote: getServer('119.3.41.106'), command: "ls -l  ./code"
-            sshCommand remote: getServer('119.3.41.106'), command: "docker-compose -f code/server/docker-comppose.yml up"              
+            sshCommand remote: getServer('119.3.41.106'), command: "docker-compose -f code/server/docker-compose.yml up"              
           }
         }
         stage('admin-ui') {
