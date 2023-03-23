@@ -7,5 +7,5 @@ export type AddressCreateInput = {
   state?: string | null;
   zip?: number | null;
   customers?: CustomerCreateNestedManyWithoutAddressesInput;
-  tel?: string | null;
+  pos?: string | null;
 };

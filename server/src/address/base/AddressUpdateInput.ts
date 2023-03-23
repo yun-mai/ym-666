@@ -93,7 +93,7 @@ class AddressUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  tel?: string | null;
+  pos?: string | null;
 }
 
 export { AddressUpdateInput as AddressUpdateInput };

@@ -93,7 +93,7 @@ class AddressCreateInput {
   @Field(() => String, {
     nullable: true,
   })
-  tel?: string | null;
+  pos?: string | null;
 }
 
 export { AddressCreateInput as AddressCreateInput };

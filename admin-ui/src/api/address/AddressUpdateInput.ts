@@ -7,5 +7,5 @@ export type AddressUpdateInput = {
   state?: string | null;
   zip?: number | null;
   customers?: CustomerUpdateManyWithoutAddressesInput;
-  tel?: string | null;
+  pos?: string | null;
 };

@@ -61,7 +61,7 @@ export class AddressControllerBase {
         city: true,
         state: true,
         zip: true,
-        tel: true,
+        pos: true,
       },
     });
   }
@@ -91,7 +91,7 @@ export class AddressControllerBase {
         city: true,
         state: true,
         zip: true,
-        tel: true,
+        pos: true,
       },
     });
   }
@@ -122,7 +122,7 @@ export class AddressControllerBase {
         city: true,
         state: true,
         zip: true,
-        tel: true,
+        pos: true,
       },
     });
     if (result === null) {
@@ -162,7 +162,7 @@ export class AddressControllerBase {
           city: true,
           state: true,
           zip: true,
-          tel: true,
+          pos: true,
         },
       });
     } catch (error) {
@@ -201,7 +201,7 @@ export class AddressControllerBase {
           city: true,
           state: true,
           zip: true,
-          tel: true,
+          pos: true,
         },
       });
     } catch (error) {

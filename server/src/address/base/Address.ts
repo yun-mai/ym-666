@@ -120,7 +120,7 @@ class Address {
   @Field(() => String, {
     nullable: true,
   })
-  tel!: string | null;
+  pos!: string | null;
 }
 
 export { Address as Address };

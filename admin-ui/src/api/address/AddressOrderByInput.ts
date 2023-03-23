@@ -9,5 +9,5 @@ export type AddressOrderByInput = {
   city?: SortOrder;
   state?: SortOrder;
   zip?: SortOrder;
-  tel?: SortOrder;
+  pos?: SortOrder;
 };
