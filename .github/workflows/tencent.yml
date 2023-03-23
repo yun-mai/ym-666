@@ -3,7 +3,7 @@
 # To configure this workflow:
 #
 # 1. Ensure that your repository contains the necessary configuration for your Tencent Kubernetes Engine cluster,
-#    including deployment.yml, kustomization.yml, service.yml, etc.
+#    including deployment.yml, kustomization.yml, service.yml, etc.gg 
 #
 # 2. Set up secrets in your workspace:
 #    - TENCENT_CLOUD_SECRET_ID with Tencent Cloud secret id
