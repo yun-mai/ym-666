@@ -22,23 +22,23 @@ pipeline {
       parallel {
         stage('serve') {
           steps {
-            sh 'pwd && ls'
+            sh 'pwd && ls && echo ${JOB_NAME}'
             sshCommand remote: getServer('119.3.41.106'), command: "pwd"              
             sshCommand remote: getServer('119.3.41.106'), command: "ls -a"  
-            sshCommand remote: getServer('119.3.41.106'), command: "rm -Rf code",failOnError:false 
-            sshCommand remote: getServer('119.3.41.106'), command: "mkdir code",failOnError:false    
-            sshPut remote: getServer('119.3.41.106'), from: './server', into: './code'
-            sshCommand remote: getServer('119.3.41.106'), command: "ls -l  ./code"
-            sshCommand remote: getServer('119.3.41.106'), command: "docker-compose -f code/server/docker-compose.yml down",failOnError:false       
-            sshCommand remote: getServer('119.3.41.106'), command: "docker-compose -f code/server/docker-compose.yml up"              
+            sshCommand remote: getServer('119.3.41.106'), command: "rm -Rf ${JOB_NAME}",failOnError:false 
+            sshCommand remote: getServer('119.3.41.106'), command: "mkdir ${JOB_NAME}",failOnError:false    
+            sshPut remote: getServer('119.3.41.106'), from: './server', into: './${JOB_NAME}'
+            sshCommand remote: getServer('119.3.41.106'), command: "ls -l  ./${JOB_NAME}"
+            sshCommand remote: getServer('119.3.41.106'), command: "docker-compose -f ${JOB_NAME}/server/docker-compose.yml down",failOnError:false       
+            sshCommand remote: getServer('119.3.41.106'), command: "docker-compose -f ${JOB_NAME}/server/docker-compose.yml up"              
           }
         }
         stage('admin-ui') {
           steps {
             sh 'sleep 120'
-            sshPut remote: getServer('119.3.41.106'), from: './admin-ui', into: './code'
-            sshCommand remote: getServer('119.3.41.106'), command: "ls -l  ./code/admin-ui"
-            sshCommand remote: getServer('119.3.41.106'), command: "docker build -t ccict/ym666-admin-ui code/admin-ui",failOnError:false              
+            sshPut remote: getServer('119.3.41.106'), from: './admin-ui', into: './${JOB_NAME}'
+            sshCommand remote: getServer('119.3.41.106'), command: "ls -l  ./${JOB_NAME}/admin-ui"
+            sshCommand remote: getServer('119.3.41.106'), command: "docker build -t ccict/ym666-admin-ui ${JOB_NAME}/admin-ui",failOnError:false              
           }
         }
       }
@@ -52,3 +52,36 @@ pipeline {
     }
   }
 }
+
+
+//           stage('部署镜像'){
+//             ansiColor('xterm') {                 
+//               docker.withRegistry(REGISTRY_URL, REGISTRY_CREDENTIALS_ID){
+//                 def imgName = "${REGISTRY_DOMAIN}/${DOCKER_NAMESPACE}/${project_name}:${tagName}";
+
+//                 for (item in ipList.tokenize(',')){                
+//                   def sshServer = getServer(item)
+
+//                   // 更新或下载镜像
+//                   sshCommand remote: sshServer, command: "docker pull ${imgName}"
+
+//                   try{
+//                     // 停止容器
+//                     sshCommand remote: sshServer, command: "docker stop ${project_name}"
+//                     // 删除容器
+//                     sshCommand remote: sshServer, command: "docker rm -f ${project_name}"
+//                   }catch(ex){}
+
+//                   // 启动容器
+//                   sshCommand remote: sshServer, command: "docker run -d --name ${project_name} -e TZ=Asia/Shanghai ${imgName}"
+
+//                   // 清理none镜像
+//                   def clearNoneSSH = "n=`docker images | grep  '<none>' | wc -l`; if [ \$n -gt 0 ]; then docker rmi `docker images | grep  '<none>' | awk '{print \$3}'`; fi"
+//                   sshCommand remote: sshServer, command: "${clearNoneSSH}"
+//                 }
+//               }
+//             }
+// -----------------------------------
+// ©著作权归作者所有：来自51CTO博客作者catoop的原创作品，请联系作者获取转载授权，否则将追究法律责任
+// Jenkins 插件之 SSH Pipeline Steps
+// https://blog.51cto.com/u_1472521/5050322
