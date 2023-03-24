@@ -23,22 +23,22 @@ pipeline {
         stage('serve') {
           steps {
             sh 'pwd && ls && echo ${JOB_NAME}'
-            sshCommand remote: getServer('119.3.41.106'), command: "pwd"              
-            sshCommand remote: getServer('119.3.41.106'), command: "ls -a"  
-            sshCommand remote: getServer('119.3.41.106'), command: "rm -Rf ${JOB_NAME}",failOnError:false 
-            sshCommand remote: getServer('119.3.41.106'), command: "mkdir ${JOB_NAME}",failOnError:false    
-            sshPut remote: getServer('119.3.41.106'), from: './server', into: './${JOB_NAME}'
-            sshCommand remote: getServer('119.3.41.106'), command: "ls -l  ./${JOB_NAME}"
-            sshCommand remote: getServer('119.3.41.106'), command: "docker-compose -f ${JOB_NAME}/server/docker-compose.yml down",failOnError:false       
-            sshCommand remote: getServer('119.3.41.106'), command: "docker-compose -f ${JOB_NAME}/server/docker-compose.yml up"              
+              sshCommand remote: getServer(${params.deploy_host}), command: "pwd"              
+            sshCommand remote: getServer(${params.deploy_host}), command: "ls -a"  
+            sshCommand remote: getServer(${params.deploy_host}), command: "rm -Rf ${JOB_NAME}",failOnError:false 
+            sshCommand remote: getServer(${params.deploy_host}), command: "mkdir ${JOB_NAME}",failOnError:false    
+            sshPut remote: getServer(${params.deploy_host}), from: './server', into: './${JOB_NAME}'
+            sshCommand remote: getServer(${params.deploy_host}), command: "ls -l  ./${JOB_NAME}"
+            sshCommand remote: getServer(${params.deploy_host}), command: "docker-compose -f ${JOB_NAME}/server/docker-compose.yml down",failOnError:false       
+            sshCommand remote: getServer(${params.deploy_host}), command: "docker-compose -f ${JOB_NAME}/server/docker-compose.yml up"              
           }
         }
         stage('admin-ui') {
           steps {
             sh 'sleep 120'
-            sshPut remote: getServer('119.3.41.106'), from: './admin-ui', into: './${JOB_NAME}'
-            sshCommand remote: getServer('119.3.41.106'), command: "ls -l  ./${JOB_NAME}/admin-ui"
-            sshCommand remote: getServer('119.3.41.106'), command: "docker build -t ccict/ym666-admin-ui ${JOB_NAME}/admin-ui",failOnError:false              
+            sshPut remote: getServer(${params.deploy_host}), from: './admin-ui', into: './${JOB_NAME}'
+            sshCommand remote: getServer(${params.deploy_host}), command: "ls -l  ./${JOB_NAME}/admin-ui"
+            sshCommand remote: getServer(${params.deploy_host}), command: "docker build -t ccict/ym666-admin-ui ${JOB_NAME}/admin-ui",failOnError:false              
           }
         }
       }
