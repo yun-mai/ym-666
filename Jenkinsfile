@@ -22,7 +22,7 @@ pipeline {
       parallel {
         stage('serve') {
           steps {
-            sh 'pwd && ls && echo ${JOB_NAME}'
+            sh 'pwd && ls && echo ${JOB_NAME}  ${params.deploy_host}'
               sshCommand remote: getServer(${params.deploy_host}), command: "pwd"              
             sshCommand remote: getServer(${params.deploy_host}), command: "ls -a"  
             sshCommand remote: getServer(${params.deploy_host}), command: "rm -Rf ${JOB_NAME}",failOnError:false 
