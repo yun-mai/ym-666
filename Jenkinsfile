@@ -33,7 +33,7 @@ pipeline {
           steps {
             sshPut remote: getServer("${deploy_host}"), from: "./server", into: "./${JOB_NAME}"
             sshCommand remote: getServer("${deploy_host}"), command: "ls -l  ./${JOB_NAME}"
-            sshCommand remote: getServer("${deploy_host}"), command: "docker-compose -f ${JOB_NAME}/server/docker-compose.yml down",failOnError:false       
+            sshCommand remote: getServer("${deploy_host}"), command: "docker-compose -f ${JOB_NAME}/server/docker-compose.yml down --remove-orphans",failOnError:false       
             sshCommand remote: getServer("${deploy_host}"), command: "docker-compose -f ${JOB_NAME}/server/docker-compose.yml up -d"              
           }
         }
@@ -53,7 +53,7 @@ pipeline {
 
   post { 
     always {
-        sh: "echo 全部任务任务执行完毕！"        
+        sshCommand remote: getServer("${deploy_host}"), command: "echo 全部任务任务执行完毕！"              
         // sshCommand remote: getServer("${deploy_host}"), command: "docker-compose down"        
     }
   }
